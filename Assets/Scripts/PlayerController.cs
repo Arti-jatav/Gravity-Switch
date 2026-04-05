@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(GravityBody))]
@@ -92,5 +92,12 @@ public class PlayerController : MonoBehaviour
 
         _animator.SetFloat(_animSpeed, _input.magnitude);
         _animator.SetBool(_animGrounded, _isGrounded);
+    }
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Boundary"))
+        {
+           UIManager.Instance.ShowGameOver();
+        }
     }
 }

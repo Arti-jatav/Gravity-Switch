@@ -68,4 +68,18 @@ public class GravityCameraRig : MonoBehaviour
         _currentDistance = Mathf.Lerp(_currentDistance, targetDist, Time.deltaTime * _collisionSmoothSpeed);
         _cameraTarget.localPosition = new Vector3(0f, 0f, -_currentDistance);
     }
+
+    public void SetCursorState(bool enableUI)
+    {
+        if (enableUI)
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
+        else
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
+    }
 }
